@@ -6,9 +6,10 @@
  */ 
 
 #include <atmel_start.h>
-#include <array>
 #include <algorithm>
-
+#include <array>
+#include <numeric>
+#include <stdint.h>
 
 void foo( int val )
 {
@@ -18,30 +19,28 @@ void foo( int val )
 }
 
 int main(void)
-{
-	delay_init(NULL);
-	
+{	
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
 
-	const int array_val[] = {1,2,3,4,5,6,7,8,9,0};
+	delay_init(NULL);
 	
+	constexpr std::array<int, 10> vetor_int = {1,2,3,4,5,6,7,8,9,10};
+
 	gpio_set_pin_level( RX_LED, false );
 	gpio_set_pin_level( TX_LED, false );
 	
-	for( auto i : array_val  )	
+	for( auto i : vetor_int  )	
 	{
 		foo(i);
 	}
 	
-	auto f = std::find( array_val, array_val + 10, 1 );
+	auto f = std::find( vetor_int.begin(), vetor_int.end(), 8 );
 	
-	if ( std::end(array_val) != f )
+	if ( vetor_int.end() != f )
 	{
 		gpio_toggle_pin_level( RX_LED );
 	}
-	
-	
 
 	/* Replace with your application code */
 	while (1) {

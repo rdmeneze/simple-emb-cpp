@@ -157,8 +157,14 @@
   <armgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>DEBUG</Value>
+      <Value>PROFILE_GCC_GENERIC</Value>
     </ListValues>
   </armgcccpp.compiler.symbols.DefSymbols>
+  <armgcccpp.compiler.preprocessor.UndefSymbols>
+    <ListValues>
+      <Value>PROFILE_GCC_GENERIC</Value>
+    </ListValues>
+  </armgcccpp.compiler.preprocessor.UndefSymbols>
   <armgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\ARM\CMSIS\5.4.0\CMSIS\Core\Include\</Value>
