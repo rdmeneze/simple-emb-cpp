@@ -8,6 +8,7 @@
 #include <atmel_start.h>
 #include <array>
 #include <algorithm>
+#include <gpio/gpio.h>
 
 
 void foo( int val )
@@ -25,6 +26,10 @@ int main(void)
 	
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
+
+	//(GPIO_PORTA, 27)
+	gpio led_tx < GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP  >();
+
 	
 	gpio_set_pin_level( RX_LED, false );
 	gpio_set_pin_level( TX_LED, false );

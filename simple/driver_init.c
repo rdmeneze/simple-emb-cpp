@@ -12,6 +12,7 @@
 #include <hal_init.h>
 #include <hpl_gclk_base.h>
 #include <hpl_pm_base.h>
+//#include <gpio/gpio.h>
 
 void system_init(void)
 {
@@ -32,6 +33,12 @@ void system_init(void)
 	gpio_set_pin_function(LED, GPIO_PIN_FUNCTION_OFF);
 
 	// GPIO on PA27
+
+	
+	//GPIO_PORTA, 17
+	//gpio led_rx
+
+
 
 	gpio_set_pin_level(TX_LED,
 	                   // <y> Initial level
