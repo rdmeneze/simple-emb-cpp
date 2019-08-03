@@ -19,12 +19,12 @@ void foo( int val )
 
 int main(void)
 {
+	constexpr std::array<int, 10> array_val = {1,2,3,4,5,6,7,8,9,0};
+	
 	delay_init(NULL);
 	
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
-
-	const int array_val[] = {1,2,3,4,5,6,7,8,9,0};
 	
 	gpio_set_pin_level( RX_LED, false );
 	gpio_set_pin_level( TX_LED, false );
@@ -34,9 +34,9 @@ int main(void)
 		foo(i);
 	}
 	
-	auto f = std::find( array_val, array_val + 10, 1 );
+	auto f = std::find( array_val.begin(), array_val.end(), 1 );
 	
-	if ( std::end(array_val) != f )
+	if ( array_val.end() != f )
 	{
 		gpio_toggle_pin_level( RX_LED );
 	}

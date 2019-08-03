@@ -15,7 +15,7 @@
     <AssemblyName>test</AssemblyName>
     <Name>simplelib</Name>
     <RootNamespace>test</RootNamespace>
-    <ToolchainFlavour>Native</ToolchainFlavour>
+    <ToolchainFlavour>7 2018-q2-update</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
