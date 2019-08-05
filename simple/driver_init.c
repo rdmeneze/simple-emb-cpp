@@ -12,7 +12,6 @@
 #include <hal_init.h>
 #include <hpl_gclk_base.h>
 #include <hpl_pm_base.h>
-//#include <gpio/gpio.h>
 
 void system_init(void)
 {

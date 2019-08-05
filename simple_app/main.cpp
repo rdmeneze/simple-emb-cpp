@@ -5,55 +5,34 @@
  * Author : Rafael Dias
  */ 
 
-#include <atmel_start.h>
+//#include <atmel_start.h>
 #include <array>
 #include <algorithm>
-#include <gpio/gpio.h>
+#include <gpio.h>
+#include <cpu.h>
 
 
 void foo( int val )
 {
-	delay_ms( val );
-	
-	__NOP();
+
 }
 
 int main(void)
 {
-	constexpr std::array<int, 10> array_val = {1,2,3,4,5,6,7,8,9,0};
+	cpu::init();
 	
-	delay_init(NULL);
+	gpio led_rx( GPIO_PORTB, 3, GPIO_DIRECTION_OUT, GPIO_PULL_UP );
+	
 	
 	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
-
-	//(GPIO_PORTA, 27)
-	//gpio led_tx < GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP  >();
-	const gpio led_tx( GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP );
-
-	
-	gpio_set_pin_level( RX_LED, false );
-	gpio_set_pin_level( TX_LED, false );
-	
-	for( auto i : array_val  )	
-	{
-		foo(i);
-	}
-	
-	auto f = std::find( array_val.begin(), array_val.end(), 1 );
-	
-	if ( array_val.end() != f )
-	{
-		gpio_toggle_pin_level( RX_LED );
-	}
-	
-	
+	//atmel_start_init();
 
 	/* Replace with your application code */
 	while (1) {
+		for (int i = 0; i < 1000000; i++);		
+		led_rx.set();
 		for (int i = 0; i < 1000000; i++);
-		gpio_toggle_pin_level( RX_LED );
-		gpio_toggle_pin_level( TX_LED );
+		led_rx.clear();
 		
 	}
 }
