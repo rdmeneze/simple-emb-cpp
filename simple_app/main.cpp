@@ -28,7 +28,8 @@ int main(void)
 	atmel_start_init();
 
 	//(GPIO_PORTA, 27)
-	gpio led_tx < GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP  >();
+	//gpio led_tx < GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP  >();
+	const gpio led_tx( GPIO_PORTA, 27, GPIO_DIRECTION_OUT, GPIO_PULL_UP );
 
 	
 	gpio_set_pin_level( RX_LED, false );

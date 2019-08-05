@@ -12,19 +12,17 @@
 #include <cstdint>
 #include <hal_gpio.h>
 
-template<	const uint8_t port,
-			const uint8_t pin,
-			const uint8_t dir,
-			const uint8_t pull >
 class gpio
 {
 	public:
-		gpio()
+		gpio( const enum gpio_port port, const uint8_t pin, const enum gpio_direction dir, const enum gpio_pull_mode pull )
 		{
+			port_pin = GPIO((uint8_t)port, pin);
+			
 			::gpio_set_pin_level( port_pin, false );
 			::gpio_set_pin_direction(port_pin, dir);
 			::gpio_set_pin_function(port_pin, GPIO_PIN_FUNCTION_OFF);
-			::gpio_toggle_port_level(port_pin, pull);
+			::gpio_toggle_port_level((gpio_port)GPIO_PORT(port_pin), GPIO_PIN(port_pin));
 		}
 	
 		void set( bool value )
@@ -54,7 +52,12 @@ class gpio
 		}
 		
 	private:
-		const std::uint8_t port_pin = GPIO(port, pin);
+		uint8_t port; 
+		uint8_t pin; 
+		uint8_t dir; 
+		uint8_t pull;
+	
+		uint8_t port_pin;
 };
 		
 
